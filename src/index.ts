@@ -221,7 +221,7 @@ const hex2Rgba: Function = (hex: string, opacity: number): string => {
   return `rgba(${r},${g},${b},${opacity || "1"})`;
 };
 
-export default {
+export {
   browser,
   openMapApp,
   deepClone,
