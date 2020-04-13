@@ -1,5 +1,5 @@
 {
-  "name": "aboat",
+  "name": "noahsark",
   "version": "0.0.2",
   "description": "utils",
   "main": "./lib",
@@ -9,12 +9,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/LetterYan/aboat-tools.git"
+    "url": "git+ssh://git@github.com/LetterYan/NoahsArk.git"
   },
   "author": "letter yan",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/LetterYan/aboat-tools/issues"
+    "url": "https://github.com/LetterYan/NoahsArk/issues"
   },
   "devDependencies": {
     "typescript": "^3.8.3"
