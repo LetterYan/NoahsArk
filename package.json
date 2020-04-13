@@ -2,7 +2,7 @@
   "name": "aboat",
   "version": "0.0.1",
   "description": "utils",
-  "main": "index.js",
+  "main": "./lib",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rm -rf ./lib && tsc"
