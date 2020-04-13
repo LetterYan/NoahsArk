@@ -1,6 +1,6 @@
 {
-  "name": "pandora-box",
-  "version": "1.0.4",
+  "name": "aboat",
+  "version": "0.0.1",
   "description": "utils",
   "main": "index.js",
   "scripts": {
@@ -9,12 +9,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/LetterYan/pandora-js.git"
+    "url": "git+ssh://git@github.com/LetterYan/aboat-tools.git"
   },
   "author": "letter yan",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/LetterYan/pandora-js/issues"
+    "url": "https://github.com/LetterYan/aboat-tools/issues"
   },
   "devDependencies": {
     "typescript": "^3.8.3"
