@@ -4,7 +4,7 @@ declare var setTimeout: any;
 declare var clearTimeout: any;
 
 /**
- * 设备类别信息
+ * 设备信息
  */
 const browser = {
   ua: (() => {
@@ -189,6 +189,9 @@ const getDistance: Function = (
   ).toFixed(0);
 };
 
+/**
+ * 获取当前时间
+ */
 const getCurrentTime: Function = (): string => {
   //  补零
   const zeroFill = (i: number) => (i >= 0 && i <= 9 ? "0" + i : i);
@@ -213,7 +216,11 @@ const getCurrentTime: Function = (): string => {
   return curTime;
 };
 
-// hex转rbg
+/**
+ *
+ * @param hex hex转rbg
+ * @param opacity 透明度
+ */
 const hex2Rgba: Function = (hex: string, opacity: number): string => {
   let r = parseInt(hex.slice(1, 3), 16);
   let g = parseInt(hex.slice(3, 5), 16);
