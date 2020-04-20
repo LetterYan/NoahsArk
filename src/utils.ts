@@ -9,7 +9,7 @@ export const browser = (() => {
   if (!navigator) return { weChat: true };
   const u: any = navigator.userAgent;
   const isChrome = u.match(/Chrome\/([\d.]+)/) || u.match(/CriOS\/([\d.]+)/);
-  const isAndroid = u.match(/(Android);?[\s\/]+([\d.]+)?/);
+  const isAndroid = u.match(/(Android);?[\s/]+([\d.]+)?/);
   const iosVersion = (function () {
     if (/iP(hone|od|ad)/.test(navigator.platform)) {
       const v: any = navigator.appVersion.match(/OS (\d+)_(\d+)_?(\d+)?/);

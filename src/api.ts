@@ -1,7 +1,7 @@
+import { browser } from "./index";
 declare var window: any;
 declare var setTimeout: any;
 declare var clearTimeout: any;
-import { browser } from "./index";
 
 /**
  * 调用第三方地图api
@@ -16,7 +16,7 @@ export const openMapApp: Function = (data: {
 }) => {
   const { lng, lat, address } = data;
   // 地图uri api数组
-  const uri = new Array();
+  const uri: string[] = [];
   if (browser.weChat) {
     window.location.href = `https://uri.amap.com/marker?position=${lng},${lat}&name=${address}&src=Flow&coordinate=gaode&callnative=1`;
     return;
