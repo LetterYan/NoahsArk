@@ -40,13 +40,26 @@ hex转rbga
   getDistance(lat1:number, lng1:number, lat2:number, lng2:number)
   # return number
 
-获取当前时间（鸡肋，后面会重新写一个）
+获取当前时间（鸡肋，用dateFormat）
   getCurrentTime()
   # return '年-月-日 时:分:秒'
+
+格式化时间
+  例如 dateFormat(new Date(), "yyyy-MM-dd hh:mm:ss.S"） ==> 2020-07-02 08:09:04.423
+  dateFormat(Date, 格式)
+  # return 'x-x-x 时:分:秒'
 
 base64转二进制
   base64Img2Blob(base64)
   # return Blob
+
+数组分割
+  groupArray(array, size)
+  # return [[],[]]
+
+对比两个对象是否一样
+  deepEqual(obj, obj)
+  # return boolean
 ```
 
 #### 第三方 Api
