@@ -155,16 +155,16 @@ export const base64Img2Blob = (code: any) => {
  */
 export const groupArray = (array = [], size = 0) => {
 	//获取数组的长度，如果你传入的不是数组，那么获取到的就是undefined
-	var length = array.length;
+	const length = array.length;
 	//判断不是数组，或者size没有设置，size小于1，就返回空数组
 	if (!length || !size || size < 1) {
 		return [];
 	}
-	var index = 0; //用来表示切割元素的范围start
-	var resIndex = 0; //用来递增表示输出数组的下标
+	let index = 0; //用来表示切割元素的范围start
+	let resIndex = 0; //用来递增表示输出数组的下标
 	//根据length和size算出输出数组的长度，并且创建它。
-	var num = Math.ceil(length / size);
-	var result = new Array(num);
+	const num = Math.ceil(length / size);
+	let result = new Array(num);
 	//进行循环
 	while (index < length) {
 		//循环过程中设置result[0]和result[1]的值。该值根据array.slice切割得到。
@@ -209,7 +209,7 @@ export const deepEqual = function (x: any, y: any) {
 7  *(new Date()).Format("yyyy-M-d h:m:s.S")      ==> 2006-7-2 8:9:4.18
 8  */
 export const dateFormat = (date: Date, fmt: string) => {
-	var o = {
+	const o: any = {
 		'M+': date.getMonth() + 1, //月份
 		'd+': date.getDate(), //日
 		'h+': date.getHours(), //小时
@@ -224,7 +224,7 @@ export const dateFormat = (date: Date, fmt: string) => {
 			RegExp.$1,
 			(date.getFullYear() + '').substr(4 - RegExp.$1.length)
 		);
-	for (var k in o)
+	for (const k in o)
 		if (new RegExp('(' + k + ')').test(fmt))
 			fmt = fmt.replace(
 				RegExp.$1,
