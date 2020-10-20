@@ -2,9 +2,7 @@ declare var navigator: any;
 declare var window: any;
 declare var Blob: any;
 
-/**
- * 设备信息
- */
+/** 判断当前环境设备 */
 export const browser = (() => {
 	if (!navigator) return { weChat: true };
 	const u: any = navigator.userAgent;
@@ -55,8 +53,8 @@ export const browser = (() => {
 	};
 })();
 
-/**
- * 深拷贝
+/**	深拷贝
+ * @param obj 需要拷贝的数据
  */
 export const deepClone: Function = (obj: any): any => {
 	let t = obj ? new obj.constructor() : null;
@@ -69,13 +67,11 @@ export const deepClone: Function = (obj: any): any => {
 	return t;
 };
 
-/**
- * * 获取两个坐标的距离
- * * 返回两点之间距离
- * @param lat1 坐标 latitude
- * @param lng1 坐标 longitude
- * @param lat2 目标 latitude
- * @param lng2 目标 longitude
+/** 通过两个坐标计算两点之间距离
+ * @param lat1 坐标1 latitude
+ * @param lng1 坐标1 longitude
+ * @param lat2 坐标2 latitude
+ * @param lng2 坐标2 longitude
  */
 export const getDistance: Function = (
 	lat1: number,
@@ -104,9 +100,7 @@ export const getDistance: Function = (
 	).toFixed(0);
 };
 
-/**
- * 获取当前时间
- */
+/**	获取当前时间 */
 export const getCurrentTime: Function = (): string => {
 	//  补零
 	const zeroFill = (i: number) => (i >= 0 && i <= 9 ? '0' + i : i);
@@ -131,8 +125,7 @@ export const getCurrentTime: Function = (): string => {
 	return curTime;
 };
 
-/**
- * base64转二进制
+/**	base64转二进制
  * @param code base64
  */
 export const base64Img2Blob = (code: any) => {
@@ -148,8 +141,7 @@ export const base64Img2Blob = (code: any) => {
 	return new Blob([uInt8Array], { type: contentType });
 };
 
-/**
- * 分割数组
+/**	分割数组
  * @param array 原数组
  * @param size 切割多少个为一组
  */
@@ -173,8 +165,7 @@ export const groupArray = (array = [], size = 0) => {
 	return result;
 };
 
-/**
- * 判断两个对象是否一样
+/**	判断两个对象是否一样
  * @param x 对象
  * @param y 对象
  */
@@ -200,13 +191,18 @@ export const deepEqual = function (x: any, y: any) {
 	} else return false;
 };
 
-/**
-2  *将 Date 转化为指定格式的String
-3  *月(M)、日(d)、小时(h)、分(m)、秒(s)、季度(q) 可以用 1-2 个占位符，
-4  *年(y)可以用 1-4 个占位符，毫秒(S)只能用 1 个占位符(是 1-3 位的数字)
-5  *例子：
-6  *dateFormat(new Date(), "yyyy-MM-dd hh:mm:ss.S"） ==> 2006-07-02 08:09:04.423
-8  */
+/**	将 Date 转化为指定格式的String
+ * @param date	日期，Date类型
+ * @param fmt		格式，例如"yyyy-MM-dd hh:mm:ss.S"，或者中文
+ * 
+ * @example
+ * ```
+	月(M)、日(d)、小时(h)、分(m)、秒(s)、季度(q) 可以用 1-2 个占位符，
+	年(y)可以用 1-4 个占位符，毫秒(S)只能用 1 个占位符(是 1-3 位的数字)
+	例子：
+	dateFormat(new Date(), "yyyy-MM-dd hh:mm:ss.S"） ==> 2006-07-02 08:09:04.423
+ * ```
+ */
 export const dateFormat = (date: Date, fmt: string) => {
 	const o: any = {
 		'M+': date.getMonth() + 1, //月份
@@ -230,4 +226,39 @@ export const dateFormat = (date: Date, fmt: string) => {
 				RegExp.$1.length == 1 ? o[k] : ('00' + o[k]).substr(('' + o[k]).length)
 			);
 	return fmt;
+};
+
+/**	原生JavaScript全角转换为半角函数
+ * @param str	需要转换的字符串
+ */
+export const ToCDB = (str = '') => {
+	var result = '';
+	for (var i = 0; i < str.length; i++) {
+		const code = str.charCodeAt(i);
+		if (code >= 65281 && code <= 65374) {
+			result += String.fromCharCode(str.charCodeAt(i) - 65248);
+		} else if (code == 12288) {
+			result += String.fromCharCode(str.charCodeAt(i) - 12288 + 32);
+		} else {
+			result += str.charAt(i);
+		}
+	}
+	return result;
+};
+
+/**	转全角字符
+ * @param str	需要转换的字符串
+ */
+export const toDBC = (str = '') => {
+	var result = '';
+	var len = str.length;
+	for (var i = 0; i < len; i++) {
+		var cCode = str.charCodeAt(i);
+		//全角与半角相差（除空格外）：65248(十进制)
+		cCode = cCode >= 0x0021 && cCode <= 0x007e ? cCode + 65248 : cCode;
+		//处理空格
+		cCode = cCode == 0x0020 ? 0x03000 : cCode;
+		result += String.fromCharCode(cCode);
+	}
+	return result;
 };

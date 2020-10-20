@@ -8,6 +8,8 @@ export {
 	deepEqual,
 	dateFormat,
 	groupArray,
+	toDBC,
+	ToCDB,
 } from './utils';
 export { moveElement } from './dom';
 export { openMapApp } from './api';
