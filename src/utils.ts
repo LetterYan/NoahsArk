@@ -1,10 +1,13 @@
 declare var navigator: any;
 declare var window: any;
 declare var Blob: any;
+declare var global: any;
 
 /** 判断当前环境设备 */
 export const browser = (() => {
-	if (!navigator) return { weChat: true };
+	if (global) {
+		return { nodejs: true };
+	}
 	const u: any = navigator.userAgent;
 	const isChrome = u.match(/Chrome\/([\d.]+)/) || u.match(/CriOS\/([\d.]+)/);
 	const isAndroid = u.match(/(Android);?[\s/]+([\d.]+)?/);
